@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="https://i.ibb.co/m6Sg92w/Screenshot-from-2025-01-25-19-31-13.png" type="image/png"> <!-- Updated logo as favicon -->
+
+</head>
+<body>
+    <div class="container">
+        <h1>Social-ZX Links</h1>
+        <div id="userDetails"></div>
+        <div id="userLinks"></div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name');
+        const email = urlParams.get('email');
+        const link1 = urlParams.get('link1');
+        const link2 = urlParams.get('link2');
+        const link3 = urlParams.get('link3');
+
+        const userDetails = document.getElementById('userDetails');
+        const userLinks = document.getElementById('userLinks');
+
+        // Default "internet" logo URL
+        const defaultLogoUrl = 'https://i.ibb.co/w0sGTp4/Screenshot-from-2025-01-25-16-01-49.png';
+
+        function getLogoUrl(link) {
+            // Check for the top 10 social media platforms
+            if (link.includes('youtube.com') || link.includes('youtu.be')) {
+                return 'https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png'; // YouTube logo
+            } else if (link.includes('facebook.com')) {
+                return 'https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg'; // Facebook logo
+            } else if (link.includes('instagram.com')) {
+                return 'https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg'; // Instagram logo
+            } else if (link.includes('tiktok.com')) {
+                return 'https://upload.wikimedia.org/wikipedia/commons/6/63/TikTok_logo_2021.svg'; // TikTok logo
+            } else if (link.includes('twitter.com')) {
+                return 'https://upload.wikimedia.org/wikipedia/commons/6/60/Twitter_Logo_2012.png'; // Twitter logo
+            } else if (link.includes('linkedin.com')) {
+                return 'https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo_2019.png'; // LinkedIn logo
+            } else if (link.includes('snapchat.com')) {
+                return 'https://upload.wikimedia.org/wikipedia/commons/a/a6/Snapchat_Logo_2011.svg'; // Snapchat logo
+            } else if (link.includes('reddit.com')) {
+                return 'https://upload.wikimedia.org/wikipedia/commons/8/83/Reddit_logo_2023.svg'; // Reddit logo
+            } else if (link.includes('pinterest.com')) {
+                return 'https://upload.wikimedia.org/wikipedia/commons/f/f2/Pinterest_logo_2016.svg'; // Pinterest logo
+            } else if (link.includes('whatsapp.com')) {
+                return 'https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg'; // WhatsApp logo
+            } else {
+                return defaultLogoUrl; // Custom image for unknown links
+            }
+        }
+
+        if (name && email) {
+            userDetails.innerHTML = `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p>`;
+        }
+
+        if (link1 || link2 || link3) {
+            let linksHtml = '<p><strong>Links:</strong></p>';
+            
+            // Dynamically generate link HTML with only logos
+            [link1, link2, link3].forEach((link, index) => {
+                if (link) {
+                    const logoUrl = getLogoUrl(link);
+                    linksHtml += `<p><a href="${link}" target="_blank">
+                                    <img src="${logoUrl}" alt="Logo" style="width: 30px; height: 30px;">
+                                  </a></p>`;
+                }
+            });
+
+            userLinks.innerHTML = linksHtml;
+        } else {
+            userLinks.innerHTML = '<p>No links available.</p>';
+        }
+    </script>
+</body>
+</html>

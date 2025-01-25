@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social-ZX</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="https://i.ibb.co/m6Sg92w/Screenshot-from-2025-01-25-19-31-13.png" type="image/png"> <!-- Updated logo as favicon -->
+</head>
+<body>
+    <div class="container">
+        <h1>Social-ZX</h1>
+        <form id="linkForm">
+            <div class="input-group">
+                <label for="userName">Your Name:</label>
+                <input type="text" id="userName" placeholder="Enter your name">
+            </div>
+            <div class="input-group">
+                <label for="userEmail">Your Email:</label>
+                <input type="email" id="userEmail" placeholder="Enter your business email">
+            </div>
+            <div class="input-group">
+                <label for="link1">1st Link:</label>
+                <input type="url" id="link1" placeholder="Enter any link (e.g., https://example.com)">
+            </div>
+            <div class="input-group">
+                <label for="link2">2nd Link:</label>
+                <input type="url" id="link2" placeholder="Enter any link (e.g., https://example.com)">
+            </div>
+            <div class="input-group">
+                <label for="link3">3rd Link:</label>
+                <input type="url" id="link3" placeholder="Enter any link (e.g., https://example.com)">
+            </div>
+            <button type="button" id="generate">Generate Link</button>
+
+
+        </form>
+    </div>
+    <div class="github-link">
+        <a href="https://github.com/SovitRizal" target="_blank">Github</a>
+    </div>
+    
+    <div id="popup" class="hidden">
+        <a id="generatedLink" href="#" target="_blank"></a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
